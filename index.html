@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keysynko StreamHub</title>
+<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">KS</span><b>KEYSYNKO</b><span class="badge hub">STREAMHUB</span></div>
+  <div class="roleswitch" title="Demo přepínač role">
+    <select id="roleSelect" onchange="setRole(this.value)">
+      <option value="viewer">Pohled diváka</option>
+      <option value="admin">Administrátor</option>
+      <option value="streamer">Streamer</option>
+    </select>
+  </div>
+  <div class="me"><b id="userName"></b><span class="pts" id="userPts"></span></div>
+</header>
+<div class="layout">
+  <nav class="sidebar" id="nav">
+    <button data-tab="predictions" class="active">Sázky (Predictions)</button>
+    <button data-tab="wheel">Kolo štěstí</button>
+    <button data-tab="shop">Obchod za Body</button>
+    <button data-tab="inventory">Můj inventář <span class="badge blue" id="invCount">0</span></button>
+    <hr class="staff-only">
+    <button data-tab="admin" class="staff-only">Administrace</button>
+    <button data-tab="overlays" class="staff-only">OBS Overlay Studio</button>
+  </nav>
+  <main>
+    <section id="tab-predictions" class="tab active"></section>
+    <section id="tab-wheel" class="tab"></section>
+    <section id="tab-shop" class="tab"></section>
+    <section id="tab-inventory" class="tab"></section>
+    <section id="tab-admin" class="tab"></section>
+    <section id="tab-overlays" class="tab"></section>
+  </main>
+</div>
+<div id="modal" class="modal" hidden><div class="modal-box" id="modalBox"></div></div>
+<div id="toast" class="toast"></div>
+<script src="js/app.js"></script>
+<script src="js/shop.js"></script>
+<script src="js/inventory.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/wheel.js"></script>
+<script src="js/predictions.js"></script>
+<script src="js/overlays.js"></script>
+</body>
+</html>

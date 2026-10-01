@@ -1,0 +1,25 @@
+.badge{font-size:.65rem;font-weight:700;padding:.1rem .45rem;border-radius:5px;background:var(--panel);border:1px solid var(--line)}
+.badge.hub{background:linear-gradient(90deg,var(--red),var(--blue),var(--green));color:#fff;border:0}
+.badge.blue{color:var(--blue);border-color:var(--blue)}
+.badge.sub{color:var(--green);border-color:var(--green)}
+.badge.vip{color:var(--red-hi);border-color:var(--red)}
+.btn{border:0;border-radius:8px;padding:.55rem 1rem;font-weight:700;color:#fff;cursor:pointer;background:var(--blue)}
+.btn.red{background:var(--red)}.btn.green{background:#0f9d3f}.btn.ghost{background:var(--panel);border:1px solid var(--line)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem}
+.item h3{font-size:1rem}.price{color:var(--green);font-weight:700}
+.row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.chips{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.chip{background:var(--panel);border:1px solid var(--line);color:var(--text);padding:.35rem .8rem;border-radius:99px;cursor:pointer}
+.chip.active{border-color:var(--red-hi);color:var(--red-hi)}
+.qty{width:70px}
+.bar{height:8px;border-radius:99px;background:var(--red);overflow:hidden}.bar i{display:block;height:100%;background:var(--blue)}
+.bet-box{border:1px solid var(--blue);border-radius:12px;padding:.8rem}.bet-box.no{border-color:var(--red)}
+.code{font-family:Consolas,monospace;background:#000;border:1px dashed var(--green);padding:.15rem .5rem;border-radius:6px;color:var(--green)}
+table{width:100%;border-collapse:collapse}td,th{padding:.5rem;border-bottom:1px solid var(--line);text-align:left}
+.modal{position:fixed;inset:0;background:#000a;display:grid;place-items:center;z-index:20}.modal[hidden]{display:none}
+.modal-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.2rem;width:min(420px,92vw);display:grid;gap:.6rem}
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translate(-50%,20px);background:var(--panel);border:1px solid var(--green);padding:.6rem 1rem;border-radius:10px;opacity:0;pointer-events:none;transition:.2s;z-index:30}
+.toast.show{opacity:1;transform:translate(-50%,0)}.toast.err{border-color:var(--red-hi)}
+canvas{max-width:100%}
