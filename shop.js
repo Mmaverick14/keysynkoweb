@@ -3,10 +3,10 @@ function renderShop(){
  const el=document.getElementById('tab-shop');
  const items=State.items.filter(i=>shopCat==='Vše'||i.cat===shopCat);
  el.innerHTML=`<h1>Obchod za Body</h1><p class="sub">Utrať své body za tikety, poukazy a výhody.</p>
- <div class="chips">${CATS.map(c=>`<button class="chip ${c===shopCat?'active':''}" onclick="setShopCat('${c}')">${c}</button>`).join('')}</div>
+ ${isStaff()?'<button class="btn green" onclick="itemForm()" style="margin-bottom:1rem">+ Přidat produkt</button>':''}<div class="chips">${CATS.map(c=>`<button class="chip ${c===shopCat?'active':''}" onclick="setShopCat('${c}')">${c}</button>`).join('')}</div>
  <div class="grid">${items.map(i=>`<div class="card item"><div class="row"><span class="badge blue">${esc(i.cat)}</span>${i.subOnly?'<span class="badge sub">POUZE SUB</span>':''}</div>
  <h3>${esc(i.name)}</h3><p class="sub">${esc(i.desc||'')}</p><div class="price">${fmt(i.price)} B</div>
- <div class="row" style="margin-top:.6rem"><input class="qty" id="q${i.id}" type="number" min="1" value="1" aria-label="Počet kusů"><button class="btn" onclick="buyItem(${i.id})">Koupit</button></div></div>`).join('')||'<p class="sub">V této kategorii nic není.</p>'}</div>`}
+ <div class="row" style="margin-top:.6rem"><input class="qty" id="q${i.id}" type="number" min="1" value="1" aria-label="Počet kusů"><button class="btn" onclick="buyItem(${i.id})">Koupit</button></div>${isStaff()?`<div class="row" style="margin-top:.5rem"><button class="btn ghost" onclick="itemForm(${i.id})">Upravit</button><button class="btn red" onclick="deleteItem(${i.id})">Smazat</button></div>`:''}</div>`).join('')||'<p class="sub">V této kategorii nic není.</p>'}</div>`}
 function setShopCat(c){shopCat=c;renderShop()}
 function genCode(){const a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<12;i++)s+=(i&&i%4===0?'-':'')+a[Math.floor(Math.random()*a.length)];return s}
 function buyItem(id){

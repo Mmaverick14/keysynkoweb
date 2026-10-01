@@ -21,7 +21,7 @@ function saveItem(id){
  const d={name:fName.value.trim(),cat:fCat.value,price:Math.max(0,parseInt(fPrice.value)||0),desc:fDesc.value,subOnly:fSub.checked};
  if(!d.name)return toast('Zadej název',true);
  if(id)Object.assign(State.items.find(x=>x.id===id),d);else State.items.push({id:State.nextId++,...d});
- saveState();closeModal();renderAdmin();toast('Produkt uložen')}
-function deleteItem(id){if(!isStaff()||!confirm('Smazat produkt?'))return;State.items=State.items.filter(x=>x.id!==id);saveState();renderAdmin()}
+ saveState();closeModal();refreshAll();toast('Produkt uložen')}
+function deleteItem(id){if(!isStaff()||!confirm('Smazat produkt?'))return;State.items=State.items.filter(x=>x.id!==id);saveState();refreshAll()}
 function resetAllPoints(){if(!isStaff()||!confirm('Resetovat body všem?'))return;State.users.forEach(u=>u.points=0);State.user.points=0;saveState();renderHeader();renderAdmin()}
 function resetUserPoints(n){if(!isStaff())return;const u=State.users[n];u.points=0;if(u.name===State.user.name)State.user.points=0;saveState();renderHeader();renderAdmin()}

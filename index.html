@@ -15,7 +15,7 @@
     <span class="logo">KS</span>
     <div class="brandtxt"><div><b>KEYSYNKO</b><span class="badge hub">STREAMHUB</span></div>
       <small><span class="kick">▣ Kick Partner</span> &nbsp;•&nbsp; <span class="viewers">1,482 Diváků</span></small></div>
-    <div class="seg">
+    <div class="seg" id="demoSeg">
       <button id="segViewer" onclick="setRole('viewer')">👁 Pohled Diváka</button>
       <button id="segStaff" onclick="setRole('admin')">👤 Administrátor / Streamer</button>
     </div>
@@ -23,7 +23,7 @@
   <div class="me">
     <div class="meinfo"><div><b id="userName"></b><span class="badge vip">VIP SUB</span></div>
       <small>💬 1,482 zpráv &nbsp;•&nbsp; <span class="pts" id="userPts"></span></small></div>
-    <span class="avatar">K</span>
+    <span class="avatar" id="avatar">K</span><button id="loginBtn" class="btn kickbtn" onclick="kickLogin()">Přihlásit přes Kick</button><button id="logoutBtn" class="btn ghost" onclick="kickLogout()" hidden>Odhlásit</button>
   </div>
 </header>
 <div class="layout">
@@ -55,8 +55,11 @@
     <section id="tab-overlays" class="tab"></section>
   </main>
 </div>
+<div id="gate" class="gate" hidden><div><h1>KEYSYNKO StreamHub</h1><p class="sub">Pro vstup se přihlas přes Kick.</p><button class="btn kickbtn" onclick="kickLogin()">Přihlásit přes Kick</button></div></div>
 <div id="modal" class="modal" hidden><div class="modal-box" id="modalBox"></div></div>
 <div id="toast" class="toast"></div>
+<script src="config.js"></script>
+<script src="auth.js"></script>
 <script src="app.js"></script>
 <script src="shop.js"></script>
 <script src="inventory.js"></script>

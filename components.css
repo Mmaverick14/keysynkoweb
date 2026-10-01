@@ -41,3 +41,6 @@ canvas{max-width:100%}
 .bbox.no .t{color:var(--red-hi)}.bbox .t span{font-weight:400;color:var(--mute);font-size:.68rem}
 .bbox .in{display:flex;gap:.5rem}.bbox input{flex:1;min-width:0;font-family:Consolas,monospace}
 @media(max-width:600px){.bets{grid-template-columns:1fr}}
+[hidden]{display:none!important}
+.kickbtn{background:#53fc18;color:#000}
+.gate{position:fixed;inset:0;background:var(--bg);display:grid;place-items:center;text-align:center;z-index:50}
