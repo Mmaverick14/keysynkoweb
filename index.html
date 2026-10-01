@@ -4,34 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Keysynko StreamHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
 <link rel="stylesheet" href="main.css">
 <link rel="stylesheet" href="components.css">
 </head>
 <body>
 <header class="topbar">
-  <div class="brand"><span class="logo">KS</span><b>KEYSYNKO</b><span class="badge hub">STREAMHUB</span></div>
-  <div class="roleswitch" title="Demo přepínač role">
-    <select id="roleSelect" onchange="setRole(this.value)">
-      <option value="viewer">Pohled diváka</option>
-      <option value="admin">Administrátor</option>
-      <option value="streamer">Streamer</option>
-    </select>
+  <div class="left">
+    <span class="logo">KS</span>
+    <div class="brandtxt"><div><b>KEYSYNKO</b><span class="badge hub">STREAMHUB</span></div>
+      <small><span class="kick">▣ Kick Partner</span> &nbsp;•&nbsp; <span class="viewers">1,482 Diváků</span></small></div>
+    <div class="seg">
+      <button id="segViewer" onclick="setRole('viewer')">👁 Pohled Diváka</button>
+      <button id="segStaff" onclick="setRole('admin')">👤 Administrátor / Streamer</button>
+    </div>
   </div>
-  <div class="me"><b id="userName"></b><span class="pts" id="userPts"></span></div>
+  <div class="me">
+    <div class="meinfo"><div><b id="userName"></b><span class="badge vip">VIP SUB</span></div>
+      <small>💬 1,482 zpráv &nbsp;•&nbsp; <span class="pts" id="userPts"></span></small></div>
+    <span class="avatar">K</span>
+  </div>
 </header>
 <div class="layout">
   <nav class="sidebar" id="nav">
-    <button data-tab="predictions" class="active">Sázky (Predictions)</button>
-    <button data-tab="wheel">Kolo štěstí</button>
-    <button data-tab="shop">Obchod za Body</button>
-    <button data-tab="inventory">Můj inventář <span class="badge blue" id="invCount">0</span></button>
+    <div class="navlabel">STREAM MODULY</div>
+    <button data-tab="predictions" class="active">🎲 Sázky (Predictions)</button>
+    <button data-tab="wheel">🎡 Kolo Štěstí</button>
+    <button data-tab="tasks">✅ Úkoly a Odměny</button>
+    <button data-tab="monthly">🏆 Měsíční Soutěž</button>
+    <button data-tab="quick">⚡ Rychlá Soutěž</button>
+    <button data-tab="top">💬 Nejlepší Chatter</button>
+    <button data-tab="shop">🛒 Obchod za Body</button>
+    <button data-tab="inventory">📦 Můj Inventář <span class="badge blue" id="invCount">0</span></button>
     <hr class="staff-only">
-    <button data-tab="admin" class="staff-only">Administrace</button>
-    <button data-tab="overlays" class="staff-only">OBS Overlay Studio</button>
+    <button data-tab="admin" class="staff-only">⚙ Administrace</button>
+    <div class="spacer"></div>
+    <button data-tab="overlays" class="staff-only obsbtn">🔒 OBS Overlay Studio<small>Role Administrátor / Streamer</small></button>
   </nav>
   <main>
     <section id="tab-predictions" class="tab active"></section>
     <section id="tab-wheel" class="tab"></section>
+    <section id="tab-tasks" class="tab"></section>
+    <section id="tab-monthly" class="tab"></section>
+    <section id="tab-quick" class="tab"></section>
+    <section id="tab-top" class="tab"></section>
     <section id="tab-shop" class="tab"></section>
     <section id="tab-inventory" class="tab"></section>
     <section id="tab-admin" class="tab"></section>

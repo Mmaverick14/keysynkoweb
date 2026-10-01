@@ -6,6 +6,7 @@ const DEFAULT_ITEMS=[
  {id:3,name:'Steam poukaz 10 €',cat:'Poukazy',price:12000,subOnly:false,desc:'Kód pro Steam peněženku.'},
  {id:4,name:'VIP role na Discordu',cat:'VIP',price:8000,subOnly:true,desc:'30 dní VIP.'},
  {id:5,name:'CS2 skin – P250 Sand Dune',cat:'CS2 skiny',price:3000,subOnly:false,desc:'Předáno přes trade.'}];
+const PLACEHOLDERS={tasks:'Úkoly a Odměny',monthly:'Měsíční Soutěž',quick:'Rychlá Soutěž',top:'Nejlepší Chatter'};
 const CATS=['Vše','Losování','Hardware','Poukazy','VIP','CS2 skiny'];
 const freshState=()=>({user:{name:'Viewer_Keysynko',points:19250,sub:true,role:'viewer'},
  items:JSON.parse(JSON.stringify(DEFAULT_ITEMS)),inventory:[],nextId:100,
@@ -21,8 +22,8 @@ function openModal(html){document.getElementById('modalBox').innerHTML=html;docu
 function closeModal(){document.getElementById('modal').hidden=true}
 function renderHeader(){
  document.getElementById('userName').textContent=State.user.name;
- document.getElementById('userPts').textContent=fmt(State.user.points)+' B';
- document.getElementById('roleSelect').value=State.user.role;
+ document.getElementById('userPts').textContent='💰 '+fmt(State.user.points)+' B';
+ document.getElementById('segViewer').classList.toggle('on',!isStaff());document.getElementById('segStaff').classList.toggle('on',isStaff());
  document.getElementById('invCount').textContent=State.inventory.length}
 function addPoints(n){State.user.points+=n;const u=State.users.find(x=>x.name===State.user.name);if(u)u.points=State.user.points;saveState();renderHeader()}
 function applyRole(){
@@ -34,6 +35,7 @@ function switchTab(name){
  if(['admin','overlays'].includes(name)&&!isStaff())return toast('Přístup jen pro administrátora / streamera',true);
  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.id==='tab-'+name));
  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));
+ if(PLACEHOLDERS[name]){document.getElementById('tab-'+name).innerHTML='<h1>'+PLACEHOLDERS[name]+'</h1><p class="sub">Tento modul se připravuje.</p><div class="card">Zatím tu nic není.</div>';return}
  const fn={predictions:'renderPredictions',wheel:'renderWheel',shop:'renderShop',inventory:'renderInventory',admin:'renderAdmin',overlays:'renderOverlays'}[name];
  if(typeof window[fn]==='function')window[fn]()}
 function refreshAll(){const a=document.querySelector('.tab.active');if(a)switchTab(a.id.replace('tab-',''))}
